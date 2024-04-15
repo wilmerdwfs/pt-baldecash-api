@@ -22,6 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('users/delete',[UsersController::class, 'delete']);
     Route::get('users/edit/{id}',[UsersController::class, 'edit']);
     Route::put('users/edit-save', [UsersController::class, 'editSave']);
+    Route::post('auth/close',[AuthController::class, 'close']);
 });
 
 Route::post('auth/login',[AuthController::class, 'login']);

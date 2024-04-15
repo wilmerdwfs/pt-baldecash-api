@@ -36,4 +36,18 @@ class AuthController extends Controller
             'message' => 'User logged in successfuly',
         ],200);
     }
+
+    public function close(Request $request)
+    {
+        
+        Auth::guard('web')->logout(); // Cierra la sesión del usuario actual
+        
+        $request->session()->invalidate(); // Invalida la sesión existente
+        $request->session()->regenerateToken(); // Genera un nuevo token CSRF
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Session cerrada',
+        ],200);
+    }
 }
